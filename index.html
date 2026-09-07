@@ -2,12 +2,38 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
     </head>
     <body>
         <div class="desktop" id="desktop"></div>
         <div class="taskbar">
             <div class="startbtn" id="startBtn">Start</div>
             <div class="clock" id="clockText"></div>
+        </div>
+
+        <div class="window" id="notes" style="top:80px;left:80px;display:none">
+        <div class="windowheader" id="notesheader"><span>Notepad</span>
+            <div class="winbtn" id="notesclose">X</div></div>
+        <div class="winbody">
+            <textarea id="notesArea" style="width:250px;height:150px;"></textarea>
+        </div>
+        </div>
+
+        <div class="window" id="weather" style="top:80px;left:340px;display:none">
+        <div class="windowheader" id="weatherheader"><span>Weather</span>
+            <div class="winbtn" id="weatherclose">X</div></div>
+        <div class="winbody"><p id="weatherText">--</p></div>
+        </div>
+        <div class="window" id="mycomputer" style="top:60px;left:600px;display:none">
+        <div class="windowheader" id="mycomputerheader"><span>My Computer</span>
+            <div class="winbtn" id="mycomputerclose">X</div></div>
+        <div class="winbody"><p>C:\ Panex</p></div>
+        </div>
+
+        <div class="startmenu" id="startMenu" style="display:none">
+        <div class="startitem" onclick="openWindow(document.getElementById('notes'))">Notepad</div>
+        <div class="startitem" onclick="openWindow(document.getElementById('weather'))">Weather</div>
+        <div class="startitem" onclick="openWindow(document.getElementById('mycomputer'))">My Computer</div>
         </div>
         <script src="script.js"></script>
     </body>

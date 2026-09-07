@@ -35,3 +35,27 @@ function initWindow(id) {
   el.onmousedown = function(){ bringToFront(el); };
   document.getElementById(id + "close").onclick = function(){ closeWindow(el); };
 }
+var notesArea = document.getElementById("notesArea");
+notesArea.value = localStorage.getItem("panex_notes") || "";
+notesArea.addEventListener("input", function() {
+  localStorage.setItem("panex_notes", notesArea.value);
+});
+
+function loadWeather() {
+  navigator.geolocation.getCurrentPosition(function(pos) {
+    var url = "https://api.open-meteo.com/v1/forecast?latitude=" + pos.coords.latitude +
+      "&longitude=" + pos.coords.longitude + "&current=temperature_2m";
+    fetch(url).then(r => r.json()).then(function(data) {
+      document.getElementById("weatherText").innerHTML = Math.round(data.current.temperature_2m) + "°C";
+    });
+  });
+}
+loadWeather();
+
+initWindow("notes");
+initWindow("weather");
+document.getElementById("startBtn").onclick = function() {
+  var m = document.getElementById("startMenu");
+  m.style.display = m.style.display === "block" ? "none" : "block";
+};
+initWindow("mycomputer");

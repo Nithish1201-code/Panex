@@ -24,3 +24,13 @@ body { margin:0; font-family: "Tahoma","MS Sans Serif",sans-serif; }
   font-size:10px; line-height:14px; text-align:center; cursor:pointer;
 }
 .winbody { padding:8px; flex:1; overflow:auto; }
+.startmenu {
+  position:absolute; bottom:32px; left:0; width:160px;
+  background:#c0c0c0; border:2px outset #fff;
+}
+.startmenu {
+  position:absolute; bottom:32px; left:0; width:160px;
+  background:#c0c0c0; border:2px outset #fff;
+}
+.startitem { padding:6px 10px; cursor:pointer; }
+.startitem:hover { background:#000080; color:#fff; }
