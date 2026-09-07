@@ -81,12 +81,13 @@ The desktop and windows are built with normal HTML elements, CSS handles the old
 
 The project is split into a few simple files instead of putting everything into one massive file.
 
-## Files
---- | ---
-`index.html` | main desktop and window structure
-`style.css` | all the desktop and windows styling
-`script.js` | window behaviour, taskbar, clock, weather and localStorage
-`icons/` | desktop and application icons
+
+| Files | Description |
+| :--- | :--- |
+| `index.html` | Main desktop and window structure |
+| `style.css` | All the desktop and windows styling |
+| `script.js` | Window behaviour, taskbar, clock, weather, and localStorage |
+| `icons/` | Desktop and application icons |
 
 ## Running It
 
