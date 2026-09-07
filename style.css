@@ -10,3 +10,17 @@ body { margin:0; font-family: "Tahoma","MS Sans Serif",sans-serif; }
   border: 2px outset #fff; cursor:pointer;
 }
 .clock { margin-left:auto; margin-right:8px; border: 1px inset #808080; padding:2px 8px; }
+.window {
+  position:absolute; display:flex; flex-direction:column;
+  background:#c0c0c0; border: 2px outset #fff; min-width:200px;
+}
+.windowheader {
+  background: linear-gradient(90deg,#000080,#1084d0);
+  color:#fff; display:flex; justify-content:space-between;
+  align-items:center; padding:2px 4px; cursor:grab; user-select:none;
+}
+.winbtn {
+  width:16px; height:14px; border:1px outset #fff; background:#c0c0c0;
+  font-size:10px; line-height:14px; text-align:center; cursor:pointer;
+}
+.winbody { padding:8px; flex:1; overflow:auto; }
