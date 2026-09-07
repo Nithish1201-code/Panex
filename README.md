@@ -88,6 +88,7 @@ The project is split into a few simple files instead of putting everything into 
 | `style.css` | All the desktop and windows styling |
 | `script.js` | Window behaviour, taskbar, clock, weather, and localStorage |
 | `icons/` | Desktop and application icons |
+| `fonts/` | Font for background (i prolly shouldve used this more..) |
 
 ## Running It
 
