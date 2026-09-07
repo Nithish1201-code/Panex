@@ -1,36 +1,253 @@
-body { margin:0; font-family: "Tahoma","MS Sans Serif",sans-serif; }
-.desktop { position:absolute; inset:0 0 32px 0; background:#008080; }
+@font-face {
+  font-family: "W95FA";
+  src: url("fonts/w95f.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+}
+
+.desktop {
+  position: fixed;
+  inset: 0 0 34px 0;
+  background: #008080;
+  z-index: 1;
+}
+
 .taskbar {
-  position:absolute; bottom:0; left:0; right:0; height:32px;
-  background:#c0c0c0; display:flex; align-items:center;
-  border-top: 2px solid #fff; box-shadow: inset 0 1px #dfdfdf;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34px;
+  box-sizing: border-box;
+  background: #c0c0c0;
+  display: flex;
+  align-items: center;
+  border-top: 2px solid #ffffff;
+  box-shadow: inset 0 1px #dfdfdf;
+  z-index: 1000;
 }
+
 .startbtn {
-  margin-left:2px; padding:2px 10px; font-weight:bold;
-  border: 2px outset #fff; cursor:pointer;
+  height: 26px;
+  min-width: 66px;
+  box-sizing: border-box;
+  margin-left: 2px;
+  padding: 2px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #000000;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+  cursor: pointer;
+  user-select: none;
 }
-.clock { margin-left:auto; margin-right:8px; border: 1px inset #808080; padding:2px 8px; }
+
+.startbtn:active {
+  border-style: inset;
+}
+
+.taskbarapps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.taskappbtn {
+  height: 26px;
+  max-width: 180px;
+  box-sizing: border-box;
+  padding: 2px 8px;
+  border: 1px outset #ffffff;
+  background: #c0c0c0;
+  font-size: 12px;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.taskappbtn img {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  image-rendering: pixelated;
+}
+
+.clock {
+  margin-left: auto;
+  margin-right: 6px;
+  min-width: 76px;
+  height: 24px;
+  box-sizing: border-box;
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px inset #808080;
+  background: #c0c0c0;
+  color: #000000;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: visible;
+  flex: 0 0 auto;
+}
+
 .window {
-  position:absolute; display:flex; flex-direction:column;
-  background:#c0c0c0; border: 2px outset #fff; min-width:200px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+  min-width: 200px;
+  z-index: 10;
 }
+
 .windowheader {
-  background: linear-gradient(90deg,#000080,#1084d0);
-  color:#fff; display:flex; justify-content:space-between;
-  align-items:center; padding:2px 4px; cursor:grab; user-select:none;
+  height: 20px;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  cursor: grab;
+  user-select: none;
 }
+
+.windowheader img {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  flex: 0 0 16px;
+  image-rendering: pixelated;
+}
+
+.windowheader span {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.windowcontrols {
+  display: flex;
+  gap: 2px;
+  margin-left: 4px;
+}
+
 .winbtn {
-  width:16px; height:14px; border:1px outset #fff; background:#c0c0c0;
-  font-size:10px; line-height:14px; text-align:center; cursor:pointer;
+  width: 16px;
+  height: 14px;
+  border: 1px outset #ffffff;
+  background: #c0c0c0;
+  color: #000000;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
 }
-.winbody { padding:8px; flex:1; overflow:auto; }
+
+.winbtn:active {
+  border-style: inset;
+}
+
+.winbody {
+  padding: 8px;
+  flex: 1;
+  overflow: auto;
+}
+
+#notesArea {
+  width: 250px;
+  height: 150px;
+  resize: both;
+  box-sizing: border-box;
+}
+
 .startmenu {
-  position:absolute; bottom:32px; left:0; width:160px;
-  background:#c0c0c0; border:2px outset #fff;
+  position: fixed;
+  bottom: 34px;
+  left: 0;
+  width: 180px;
+  box-sizing: border-box;
+  background: #c0c0c0;
+  border: 2px outset #ffffff;
+  display: none;
+  z-index: 2000;
 }
-.startmenu {
-  position:absolute; bottom:32px; left:0; width:160px;
-  background:#c0c0c0; border:2px outset #fff;
+
+.startitem {
+  padding: 7px 10px;
+  color: #000000;
+  cursor: pointer;
+  user-select: none;
 }
-.startitem { padding:6px 10px; cursor:pointer; }
-.startitem:hover { background:#000080; color:#fff; }
+
+.startitem:hover {
+  background: #000080;
+  color: #ffffff;
+}
+
+.iconGrid {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 5;
+}
+
+.deskicon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.deskicon img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+}
+
+.deskicon span {
+  color: #ffffff;
+  font-size: 12px;
+  text-shadow: 1px 1px 2px #000000;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.panexLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000080;
+  font-family: "W95FA", sans-serif;
+  font-size: 64px;
+  font-weight: normal;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}

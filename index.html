@@ -1,40 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <div class="desktop" id="desktop"></div>
-        <div class="taskbar">
-            <div class="startbtn" id="startBtn">Start</div>
-            <div class="clock" id="clockText"></div>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="desktop" id="desktop">
+      <div class="panexLogo">panex</div>
+  </div>
+
+    <div class="taskbar" id="taskbar">
+      <div class="startbtn" id="startBtn">Start</div>
+        <div class="taskbarapps" id="taskbarApps"></div>
+      <div class="clock" id="clockText"></div>
+    </div>
+
+    <div class="iconGrid" id="iconGrid">
+        <div class="deskicon" ondblclick="openWindow(document.getElementById('notes'))">
+            <img src="icons/notepad.png">
+            <span>Notepad</span>
         </div>
 
-        <div class="window" id="notes" style="top:80px;left:80px;display:none">
-        <div class="windowheader" id="notesheader"><span>Notepad</span>
-            <div class="winbtn" id="notesclose">X</div></div>
+        <div class="deskicon" ondblclick="openWindow(document.getElementById('weather'))">
+            <img src="icons/weather.png">
+            <span>Weather</span>
+        </div>
+
+        <div class="deskicon" ondblclick="openWindow(document.getElementById('mycomputer'))">
+            <img src="icons/computer.png">
+            <span>My Computer</span>
+        </div>
+
+        <div class="deskicon" id="binIcon">
+            <img src="icons/binempty.png" id="binIconImg">
+            <span>Recycle Bin</span>
+        </div>
+    </div>
+
+    <div class="window" id="notes" style="top:80px;left:80px;display:none">
+        <div class="windowheader" id="notesheader">
+            <img src="icons/notepad.png">
+            <span>Notepad</span>
+            <div class="windowcontrols">
+                <div class="winbtn" id="notesmin">_</div>
+                <div class="winbtn" id="notesclose">X</div>
+            </div>
+        </div>
         <div class="winbody">
-            <textarea id="notesArea" style="width:250px;height:150px;"></textarea>
+            <textarea id="notesArea"></textarea>
         </div>
-        </div>
+    </div>
 
-        <div class="window" id="weather" style="top:80px;left:340px;display:none">
-        <div class="windowheader" id="weatherheader"><span>Weather</span>
-            <div class="winbtn" id="weatherclose">X</div></div>
-        <div class="winbody"><p id="weatherText">--</p></div>
+    <div class="window" id="weather" style="top:80px;left:340px;display:none">
+        <div class="windowheader" id="weatherheader">
+            <img src="icons/weather.png">
+            <span>Weather</span>
+            <div class="windowcontrols">
+                <div class="winbtn" id="weathermin">_</div>
+                <div class="winbtn" id="weatherclose">X</div>
+            </div>
         </div>
-        <div class="window" id="mycomputer" style="top:60px;left:600px;display:none">
-        <div class="windowheader" id="mycomputerheader"><span>My Computer</span>
-            <div class="winbtn" id="mycomputerclose">X</div></div>
-        <div class="winbody"><p>C:\ Panex</p></div>
+        <div class="winbody">
+            <p id="weatherText">--</p>
         </div>
+    </div>
 
-        <div class="startmenu" id="startMenu" style="display:none">
-        <div class="startitem" onclick="openWindow(document.getElementById('notes'))">Notepad</div>
-        <div class="startitem" onclick="openWindow(document.getElementById('weather'))">Weather</div>
-        <div class="startitem" onclick="openWindow(document.getElementById('mycomputer'))">My Computer</div>
-        </div>
-        <script src="script.js"></script>
-    </body>
+  <div class="window" id="mycomputer" style="top:60px;left:600px;display:none">
+      <div class="windowheader" id="mycomputerheader">
+          <img src="icons/computer.png">
+          <span>My Computer</span>
+          <div class="windowcontrols">
+              <div class="winbtn" id="mycomputermin">_</div>
+              <div class="winbtn" id="mycomputerclose">X</div>
+          </div>
+      </div>
+      <div class="winbody">
+        <p>C:\ Panex</p>
+      </div>
+  </div>
+
+    <div class="startmenu" id="startMenu">
+        <div class="startitem" data-window="notes">Notepad</div>
+      <div class="startitem" data-window="weather">Weather</div>
+        <div class="startitem" data-window="mycomputer">My Computer</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
