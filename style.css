@@ -5,21 +5,21 @@
   font-style: normal;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  font-family: "Tahoma", "MS Sans Serif", sans-serif;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
 }
 
 .desktop {
   position: fixed;
-  inset: 0 0 34px 0;
-  background: #008080;
+  inset: 0 0 36px 0;
+  background: #177f7f;
   z-index: 1;
 }
-
 .taskbar {
   position: fixed;
   left: 0;
