@@ -214,25 +214,26 @@ body {
 
 .startmenu {
   position: fixed;
-  bottom: 34px;
+  bottom: 36px;
   left: 0;
-  width: 180px;
+  width: 182px;
   box-sizing: border-box;
   background: #c6c6c6;
   border: 2px outset #eeeeee;
   display: none;
   z-index: 2000;
+  padding: 2px 0;
 }
 
 .startitem {
   padding: 7px 10px;
-  color: #000000;
+  color: #111111;
   cursor: pointer;
   user-select: none;
 }
 
 .startitem:hover {
-  background: #000080;
+  background: #3a6ea5;
   color: #ffffff;
 }
 
