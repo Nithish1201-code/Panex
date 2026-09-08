@@ -15,64 +15,69 @@ function bringToFront(el) {
   el.style.zIndex = topIndex;
 }
 
-function dragElement(el) {
-  var x = 0;
-  var y = 0;
-  var handle = document.getElementById(el.id + "header") || el;
+var dragEl = null;
+var mouseX = 0;
+var mouseY = 0;
 
-  handle.addEventListener("mousedown", function(e) {
-    if (e.target.closest(".winbtn")) return;
+function headerMouseDown(e) {
+  if (e.target.closest(".winbtn")) return;
 
-    x = e.clientX;
-    y = e.clientY;
+  dragEl = e.currentTarget.parentElement;
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 
-    function move(ev) {
-      var dx = x - ev.clientX;
-      var dy = y - ev.clientY;
-
-      x = ev.clientX;
-      y = ev.clientY;
-
-      el.style.top = (el.offsetTop - dy) + "px";
-      el.style.left = (el.offsetLeft - dx) + "px";
-    }
-
-    function stop() {
-      document.removeEventListener("mousemove", move);
-      document.removeEventListener("mouseup", stop);
-    }
-
-    document.addEventListener("mousemove", move);
-    document.addEventListener("mouseup", stop);
-    bringToFront(el);
-  });
+  bringToFront(dragEl);
 }
+
+function dragMouseMove(e) {
+  if (!dragEl) return;
+
+  var dx = mouseX - e.clientX;
+  var dy = mouseY - e.clientY;
+
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  dragEl.style.top = (dragEl.offsetTop - dx) + "px";
+  dragEl.style.left = (dragEl.offsetLeft - dy) + "px";
+}
+
+function dragMouseUp() {
+  dragEl = null;
+}
+
+function dragElement(el) {
+  var header = document.getElementById(el.id + "header") || el;
+  header.addEventListener("mousedown", headerMouseDown);
+}
+
+document.addEventListener("mousemove", dragMouseMove);
+document.addEventListener("mouseup", dragMouseUp);
 
 function addTaskbarBtn(id, label, iconSrc) {
   if (document.getElementById("taskbtn-" + id)) return;
 
-  var btn = document.createElement("div");
-  btn.className = "taskappbtn";
-  btn.id = "taskbtn-" + id;
+  var apps = document.getElementById("taskbarApps");
 
-  var img = document.createElement("img");
-  img.src = iconSrc;
+  apps.insertAdjacentHTML(
+    "beforeend",
+    '<div class="taskappbtn" id="taskbtn-' + id + '">' +
+      '<img src="' + iconSrc + '">' +
+      '<span>' + label + '</span>' +
+    '</div>'
+  );
 
-  var text = document.createElement("span");
-  text.textContent = label;
-
-  btn.appendChild(img);
-  btn.appendChild(text);
+  // this needs to run after the HTML is added or the button doesn't exist yet
+  var btn = document.getElementById("taskbtn-" + id);
 
   btn.addEventListener("click", function() {
     openWindow(document.getElementById(id));
   });
-
-  document.getElementById("taskbarApps").appendChild(btn);
 }
 
 function removeTaskbarBtn(id) {
   var btn = document.getElementById("taskbtn-" + id);
+
   if (btn) {
     btn.remove();
   }
@@ -135,36 +140,57 @@ function initWindow(id) {
   }
 }
 
-function loadWeather() {
-  if (!navigator.geolocation) return;
+async function loadWeather() {
+  var weatherText = document.getElementById("weatherText");
 
-  navigator.geolocation.getCurrentPosition(
-    function(pos) {
-      var url =
-        "https://api.open-meteo.com/v1/forecast?latitude=" +
-        pos.coords.latitude +
-        "&longitude=" +
-        pos.coords.longitude +
-        "&current=temperature_2m";
+  if (!navigator.geolocation) {
+    weatherText.textContent = "N/A";
+    return;
+  }
 
-      fetch(url)
-        .then(function(r) {
-          return r.json();
-        })
-        .then(function(data) {
-          if (
-            data &&
-            data.current &&
-            typeof data.current.temperature_2m === "number"
-          ) {
-            document.getElementById("weatherText").textContent =
-              Math.round(data.current.temperature_2m) + "°C";
-          }
-        })
-        .catch(function() {});
-    },
-    function() {}
-  );
+  try {
+    var pos = await new Promise(function(resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    var cached = localStorage.getItem("weatherCache");
+
+    if (cached) {
+      var weather = JSON.parse(cached);
+
+      if (Date.now() - weather.time < 600000) {
+        weatherText.textContent = Math.round(weather.temp) + "°C";
+        return;
+      }
+    }
+
+    var weatherRes = await fetch(
+      "https://api.open-meteo.com/v1/forecast?latitude=" +
+      pos.coords.latitude +
+      "&longitude=" +
+      pos.coords.longitude +
+      "&current=temperature_2m"
+    );
+
+    var data = await weatherRes.json();
+
+    if (
+      data &&
+      data.current &&
+      typeof data.current.temperature_2m === "number"
+    ) {
+      var tempC = data.current.temperature_2m;
+
+      weatherText.textContent = Math.round(tempC) + "°C";
+
+      localStorage.setItem("weatherCache", JSON.stringify({
+        temp: tempC,
+        time: Date.now()
+      }));
+    }
+  } catch (err) {
+    weatherText.textContent = "N/A";
+  }
 }
 
 var notesArea = document.getElementById("notesArea");
