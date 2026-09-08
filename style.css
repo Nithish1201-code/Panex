@@ -135,9 +135,9 @@ body {
   min-width: 220px;
 }
 .windowheader {
-  height: 20px;
+  height: 21px;
   box-sizing: border-box;
-  background: linear-gradient(90deg, #000080, #1084d0);
+  background: #3a6ea5;
   color: #ffffff;
   display: flex;
   align-items: center;
