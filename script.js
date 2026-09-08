@@ -67,7 +67,6 @@ function addTaskbarBtn(id, label, iconSrc) {
     '</div>'
   );
 
-  // this needs to run after the HTML is added or the button doesn't exist yet
   var btn = document.getElementById("taskbtn-" + id);
 
   btn.addEventListener("click", function() {
@@ -247,3 +246,4 @@ initWindow("mycomputer");
 loadWeather();
 updateClock();
 setInterval(updateClock, 1000);
+
