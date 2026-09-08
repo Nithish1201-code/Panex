@@ -38,8 +38,8 @@ function dragMouseMove(e) {
   mouseX = e.clientX;
   mouseY = e.clientY;
 
-  dragEl.style.top = (dragEl.offsetTop - dx) + "px";
-  dragEl.style.left = (dragEl.offsetLeft - dy) + "px";
+  dragEl.style.top = (dragEl.offsetTop - dy) + "px";
+  dragEl.style.left = (dragEl.offsetLeft - dx) + "px";
 }
 
 function dragMouseUp() {
