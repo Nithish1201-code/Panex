@@ -51,7 +51,7 @@
             <textarea id="notesArea"></textarea>
         </div>
     </div>
-    <div class="window" id="weather" style="top:80px;left:340px;display:none">
+    <div class="window weatherWindow" id="weather">
         <div class="windowheader" id="weatherheader">
             <img src="icons/weather.png">
             <span>Weather</span>
@@ -60,24 +60,23 @@
                 <div class="winbtn" id="weatherclose">X</div>
             </div>
         </div>
-        <div class="winbody">
+        <div class="winbody weatherbody">
             <p id="weatherText">--</p>
         </div>
     </div>
+    <div class="window computerWindow" id="mycomputer">
+        <div class="windowheader" id="mycomputerheader">
+            <img src="icons/computer.png">
+            <span>My Computer</span>
+            <div class="windowcontrols">
+                <div class="winbtn" id="mycomputerclose">X</div>
+            </div>
+        </div>
 
-  <div class="window" id="mycomputer" style="top:60px;left:600px;display:none">
-      <div class="windowheader" id="mycomputerheader">
-          <img src="icons/computer.png">
-          <span>My Computer</span>
-          <div class="windowcontrols">
-              <div class="winbtn" id="mycomputermin">_</div>
-              <div class="winbtn" id="mycomputerclose">X</div>
-          </div>
-      </div>
-      <div class="winbody">
-        <p>C:\ Panex</p>
-      </div>
-  </div>
+        <div class="winbody">
+            <p>C:\ Panex</p>
+        </div>
+    </div>
 
     <div class="startmenu" id="startMenu">
         <div class="startitem" data-window="notes">Notepad</div>
