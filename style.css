@@ -109,14 +109,31 @@ body {
 }
 .window {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
-  background: #c0c0c0;
-  border: 2px outset #ffffff;
+  background: #c6c6c6;
+  border: 2px outset #eeeeee;
   min-width: 200px;
   z-index: 10;
 }
 
+.notesWindow {
+  top: 78px;
+  left: 82px;
+}
+
+.weatherWindow {
+  top: 86px;
+  left: 346px;
+  min-width: 190px;
+  border-radius: 2px;
+}
+
+.computerWindow {
+  top: 62px;
+  left: 602px;
+  min-width: 220px;
+}
 .windowheader {
   height: 20px;
   box-sizing: border-box;
