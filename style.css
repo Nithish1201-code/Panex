@@ -239,11 +239,11 @@ body {
 
 .iconGrid {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 13px;
+  left: 13px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 17px;
   z-index: 5;
 }
 
@@ -266,20 +266,21 @@ body {
   color: #ffffff;
   font-size: 12px;
   text-shadow: 1px 1px 2px #000000;
-  margin-top: 2px;
+  margin-top: 3px;
   text-align: center;
 }
 
 .panexLogo {
   position: absolute;
-  top: 50%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #000080;
+  color: #102d52;
   font-family: "W95FA", sans-serif;
-  font-size: 64px;
+  font-size: 61px;
   font-weight: normal;
   line-height: 1;
   user-select: none;
   pointer-events: none;
+  letter-spacing: 1px;
 }
