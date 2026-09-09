@@ -14,28 +14,31 @@
         <div class="taskbarapps" id="taskbarApps"></div>
       <div class="clock" id="clockText"></div>
     </div>
+<div class="iconGrid" id="iconGrid">
 
-    <div class="iconGrid" id="iconGrid">
-        <div class="deskicon" ondblclick="openWindow(document.getElementById('notes'))">
-            <img src="icons/notepad.png">
-            <span>Notepad</span>
-        </div>
-
-        <div class="deskicon" ondblclick="openWindow(document.getElementById('weather'))">
-            <img src="icons/weather.png">
-            <span>Weather</span>
-        </div>
-
-        <div class="deskicon" ondblclick="openWindow(document.getElementById('mycomputer'))">
-            <img src="icons/computer.png">
-            <span>My Computer</span>
-        </div>
-
-        <div class="deskicon" id="binIcon">
-            <img src="icons/binempty.png" id="binIconImg">
-            <span>Recycle Bin</span>
-        </div>
+    <div class="deskicon"
+         style="left: 10px; top: 13px;"
+         ondblclick="openWindow(document.getElementById('notes'))">
+        <img src="icons/notepad.png">
+        <span>Notepad</span>
     </div>
+
+    <div class="deskicon" style="left: 10px; top: 90px;" ondblclick="openWindow(document.getElementById('weather'))">
+        <img src="icons/weather.png">
+        <span>Weather</span>
+    </div>
+
+    <div class="deskicon" style="left: 10px; top: 167px;" ondblclick="openWindow(document.getElementById('mycomputer'))">
+        <img src="icons/computer.png">
+        <span>My Computer</span>
+    </div>
+
+    <div class="deskicon"id="binIcon" style="left: 10px; top: 244px;">
+        <img src="icons/binempty.png" id="binIconImg">
+        <span>Recycle Bin</span>
+    </div>
+
+</div>
     <div class="window notesWindow" id="notes">
         <div class="windowheader" id="notesheader">
             <img src="icons/notepad.png">
