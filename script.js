@@ -246,4 +246,30 @@ initWindow("mycomputer");
 loadWeather();
 updateClock();
 setInterval(updateClock, 1000);
+const wallpapers = [
+  'wallpapers/default.png',
+  'wallpapers/custom.png',
+  'wallpapers/classic.jpeg'
+];
+
+let currentIndex = 0;
+
+function changeWallpaper() {
+  var desktop = document.getElementById("desktop");
+  var logo = document.getElementById("panexLogo");
+
+  var wallpaper = wallpapers[currentIndex];
+
+  desktop.style.backgroundImage = `url("${wallpaper}")`;
+
+  logo.style.display =
+    wallpaper === 'wallpapers/default.png'
+      ? 'block'
+      : 'none';
+
+  currentIndex = (currentIndex + 1) % wallpapers.length;
+}
+
+changeWallpaper();
+setInterval(changeWallpaper, 5000);
 

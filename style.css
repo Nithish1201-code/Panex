@@ -17,7 +17,12 @@ body {
 .desktop {
   position: fixed;
   inset: 0 0 36px 0;
-  background: #177f7f;
+  background-color: #177f7f;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  transition: background-image 1s ease-in-out;
+
   z-index: 1;
 }
 .taskbar {
