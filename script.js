@@ -178,11 +178,29 @@ document.addEventListener("click", function(e) {
 document.querySelectorAll(".startitem").forEach(function(item) {
   item.addEventListener("click", function() {
     var id = item.getAttribute("data-window");
+    if (!id) return;
     openWindow(document.getElementById(id));
     startMenu.style.display = "none";
   });
 });
+var shutdownBtn = document.getElementById("shutdownBtn");
+var shutdownScreen = document.getElementById("shutdownScreen");
+var powerBtn = document.getElementById("powerBtn");
 
+shutdownBtn.addEventListener("click", function() {
+  startMenu.style.display = "none";
+  shutdownScreen.style.display = "flex";
+  setTimeout(function() {
+    shutdownScreen.style.opacity = "1";
+  }, 10);
+});
+
+powerBtn.addEventListener("click", function() {
+  shutdownScreen.style.opacity = "0";
+  setTimeout(function() {
+    shutdownScreen.style.display = "none";
+  }, 1200);
+});
 var binIsFull = false;
 var binIcon = document.getElementById("binIcon");
 var binIconImg = document.getElementById("binIconImg");
